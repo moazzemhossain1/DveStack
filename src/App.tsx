@@ -4,6 +4,7 @@ import Banear from "./Components/Banear"
 import Naveber from "./Components/Naveber"
 import type { TechnologyType } from "./Type";
 import Technologys from "./Components/technologys/Technologys";
+import Footer from "./Components/Footer";
 
 
 const getTechnologyData = async (): Promise<TechnologyType[]> => {
@@ -33,6 +34,7 @@ function App() {
       </Technologys>
 
       </Suspense>
+      <Footer></Footer>
 
       
     </>

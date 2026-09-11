@@ -25,8 +25,11 @@ const YourStack = ({ number, setnumber, isSelected, setiselected }: YourStackPro
                                 <h3 className="text-2xl font-bold text-white">
                                     Your Stack
                                 </h3>
+                                <h4 className="mt-4  font-semibold text-white">
+                                    No Technology Selected yet.
+                                </h4>
 
-                                
+
                             </div>
 
 
