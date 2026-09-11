@@ -1,24 +1,31 @@
+import type { Dispatch, SetStateAction } from "react";
+
+interface YourStackProps {
+    number: number;
+    setnumber: Dispatch<SetStateAction<number>>;
+}
+
+const YourStack = ({number,setnumber}:YourStackProps) => {
 
 
-const YourStack = () => {
     return (
 
         <div className="h-fit sticky top-24">
 
             <div className="rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-lg">
 
-                
+
                 <div className="bg-gradient-to-r from-[#EC4899] to-[#8B5CF6] p-5">
                     <h3 className="text-2xl font-bold text-white">
                         Your Stack
                     </h3>
 
                     <p className="text-sm text-white/80 mt-1">
-                        Selected technologies
+                        {number} Selected technologies
                     </p>
                 </div>
 
-                
+
                 <div className="p-5">
 
                     <div className="border-2 border-dashed border-pink-200 rounded-xl p-8 text-center">

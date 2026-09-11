@@ -16,6 +16,8 @@ const getTechnologyData = async (): Promise<TechnologyType[]> => {
 function App() {
   const [getDataPromise]=useState((()=>getTechnologyData()))
 
+  const [number,setnumber]=useState<number>(0)
+
 
   return (
     <>
@@ -24,6 +26,8 @@ function App() {
       <Suspense fallback={<h3>Loadding...</h3>}>
       <Technologys
       getDataPromise={getDataPromise} 
+      number={number}
+      setnumber={setnumber}
       >
 
       </Technologys>

@@ -1,19 +1,23 @@
-import { use } from "react";
+import { use, useState, type Dispatch, type SetStateAction } from "react";
 import type { TechnologyType } from "../../Type";
 import TechnologyCard from "./TechnologyCard";
 import YourStack from "../YourStack";
 
 interface TechnologysProps {
     getDataPromise: Promise<TechnologyType[]>;
+    number: number;
+    setnumber: Dispatch<SetStateAction<number>>;
 }
 
-const Technologys = ({ getDataPromise }: TechnologysProps) => {
+const Technologys = ({ getDataPromise, number, setnumber }: TechnologysProps) => {
     const technologys = use(getDataPromise);
+
+    const [isSelected,setiselected]=useState<TechnologyType[]>([])
 
     return (
         <div className="container mx-auto px-4 py-10">
 
-            
+
             <div className="text-center mb-10">
                 <h3 className="lg:text-3xl text-left md:text-4xl font-extrabold text-[#0F172A]">
                     Explore the{" "}
@@ -27,10 +31,10 @@ const Technologys = ({ getDataPromise }: TechnologysProps) => {
                 </p>
             </div>
 
-           
+
             <div className="grid lg:grid-cols-4 gap-6">
 
-               
+
                 <div className="lg:col-span-3">
                     <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
 
@@ -38,6 +42,8 @@ const Technologys = ({ getDataPromise }: TechnologysProps) => {
                             <TechnologyCard
                                 key={technology.id}
                                 technology={technology}
+                                number={number}
+                                setnumber={setnumber}
                             />
                         ))}
 
@@ -45,7 +51,13 @@ const Technologys = ({ getDataPromise }: TechnologysProps) => {
                 </div>
 
                 <div>
-                    <YourStack></YourStack>
+                    <YourStack
+                        number={number}
+                        setnumber={setnumber}
+
+                    >
+
+                    </YourStack>
                 </div>
 
             </div>

@@ -1,14 +1,27 @@
-import { useState } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import type { TechnologyType } from "../../Type";
+import { toast } from "react-toastify";
 
 interface TechnologyCardProps {
     technology: TechnologyType;
+    number: number;
+    setnumber: Dispatch<SetStateAction<number>>;
 }
 
-const TechnologyCard = ({ technology }: TechnologyCardProps) => {
+const TechnologyCard = ({ technology, number, setnumber }: TechnologyCardProps) => {
     const [selected, setselected] = useState(false)
     const handleButtonSelected = () => {
         setselected(true)
+        toast.success(`🚀 ${name} added to your stack!`, {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+        });
+        const InchrageNumber = number + 1;
+        setnumber(InchrageNumber)
 
     }
     const {
