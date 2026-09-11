@@ -12,7 +12,7 @@ interface TechnologysProps {
 const Technologys = ({ getDataPromise, number, setnumber }: TechnologysProps) => {
     const technologys = use(getDataPromise);
 
-    const [isSelected,setiselected]=useState<TechnologyType[]>([])
+    const [isSelected, setiselected] = useState<TechnologyType[]>([])
 
     return (
         <div className="container mx-auto px-4 py-10">
@@ -44,6 +44,8 @@ const Technologys = ({ getDataPromise, number, setnumber }: TechnologysProps) =>
                                 technology={technology}
                                 number={number}
                                 setnumber={setnumber}
+                                isSelected={isSelected}
+                                setiselected={setiselected}
                             />
                         ))}
 
@@ -54,6 +56,8 @@ const Technologys = ({ getDataPromise, number, setnumber }: TechnologysProps) =>
                     <YourStack
                         number={number}
                         setnumber={setnumber}
+                        isSelected={isSelected}
+                        setiselected={setiselected}
 
                     >
 

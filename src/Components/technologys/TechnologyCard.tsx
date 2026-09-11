@@ -6,9 +6,11 @@ interface TechnologyCardProps {
     technology: TechnologyType;
     number: number;
     setnumber: Dispatch<SetStateAction<number>>;
+    isSelected: TechnologyType[];
+    setiselected: Dispatch<SetStateAction<TechnologyType[]>>;
 }
 
-const TechnologyCard = ({ technology, number, setnumber }: TechnologyCardProps) => {
+const TechnologyCard = ({ technology, number, setnumber, isSelected, setiselected }: TechnologyCardProps) => {
     const [selected, setselected] = useState(false)
     const handleButtonSelected = () => {
         setselected(true)
@@ -22,6 +24,9 @@ const TechnologyCard = ({ technology, number, setnumber }: TechnologyCardProps) 
         });
         const InchrageNumber = number + 1;
         setnumber(InchrageNumber)
+
+        const sparadeIsslected=[...isSelected,technology]
+        setiselected(sparadeIsslected)
 
     }
     const {
