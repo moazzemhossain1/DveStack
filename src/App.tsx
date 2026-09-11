@@ -1,3 +1,5 @@
+import Banear from "./Components/Banear"
+import Naveber from "./Components/Naveber"
 
 
 
@@ -6,9 +8,9 @@ function App() {
 
   return (
     <>
-    <h3 className="border border-amber-300 p-5 mt-2">Hi,Moazzem</h3>
-    <button className="btn btn-success">Success</button>
-   
+      <Naveber></Naveber>
+      <Banear></Banear>
+
     </>
   )
 }
