@@ -11,9 +11,10 @@ interface TechnologyCardProps {
 }
 
 const TechnologyCard = ({ technology, number, setnumber, isSelected, setiselected }: TechnologyCardProps) => {
-    const [selected, setselected] = useState(false)
+    // const [selected, setselected] = useState(false)
     const handleButtonSelected = () => {
-        setselected(true)
+       
+        // setselected(true)
         toast.success(`🚀 ${name} added to your stack!`, {
             position: "top-center",
             autoClose: 2000,
@@ -25,7 +26,7 @@ const TechnologyCard = ({ technology, number, setnumber, isSelected, setiselecte
         const InchrageNumber = number + 1;
         setnumber(InchrageNumber)
 
-        const sparadeIsslected=[...isSelected,technology]
+        const sparadeIsslected = [...isSelected, technology]
         setiselected(sparadeIsslected)
 
     }
@@ -38,6 +39,9 @@ const TechnologyCard = ({ technology, number, setnumber, isSelected, setiselecte
         difficulty,
         badge,
     } = technology;
+     const isAlreadySelected = isSelected.some(
+            (item) => item.id === technology.id
+        );
     return (
         <div>
             <div className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
@@ -108,9 +112,9 @@ const TechnologyCard = ({ technology, number, setnumber, isSelected, setiselecte
                 <div>
                     <button
                         onClick={() => handleButtonSelected()}
-                        disabled={selected}
+                        disabled={isAlreadySelected}
                         className={`rounded-lg w-full px-4 py-2 text-sm font-semibold text-white shadow-md transition-all duration-300
-                             ${selected
+                             ${isAlreadySelected
                                 ? "bg-gray-400 cursor-not-allowed"
                                 : "bg-gradient-to-r from-[#F97316] to-[#EC4899] hover:scale-105 hover:shadow-lg"
                             }
@@ -120,7 +124,7 @@ const TechnologyCard = ({ technology, number, setnumber, isSelected, setiselecte
 
                         }
                     >
-                        {selected === false ? " Add to Stack" : "Technology Selected"}
+                        {isAlreadySelected ? "Technology Selected " : "Add to Stack"}
                     </button>
                 </div>
             </div>

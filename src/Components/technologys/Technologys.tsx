@@ -19,7 +19,7 @@ const Technologys = ({ getDataPromise, number, setnumber }: TechnologysProps) =>
 
 
             <div className="text-center mb-10">
-                <h3 className="lg:text-3xl text-left md:text-4xl font-extrabold text-[#0F172A]">
+                <h3 className="lg:text-3xl lg:text-left md:text-4xl font-extrabold text-[#0F172A] sm:text-center">
                     Explore the{" "}
                     <span className="bg-gradient-to-r from-[#EC4899] to-[#8B5CF6] bg-clip-text text-transparent">
                         Technologies
