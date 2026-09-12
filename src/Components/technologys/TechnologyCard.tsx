@@ -1,6 +1,7 @@
-import { useState, type Dispatch, type SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import type { TechnologyType } from "../../Type";
 import { toast } from "react-toastify";
+import { FaCheckCircle, } from "react-icons/fa";
 
 interface TechnologyCardProps {
     technology: TechnologyType;
@@ -13,15 +14,19 @@ interface TechnologyCardProps {
 const TechnologyCard = ({ technology, number, setnumber, isSelected, setiselected }: TechnologyCardProps) => {
     // const [selected, setselected] = useState(false)
     const handleButtonSelected = () => {
-       
-        // setselected(true)
+
+
+        if (isAlreadySelected) {
+            toast.warning(`⚠️ ${name} is already in your stack!`, {
+                position: "top-center",
+                autoClose: 2000,
+            });
+            return;
+        }
+
         toast.success(`🚀 ${name} added to your stack!`, {
             position: "top-center",
             autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
         });
         const InchrageNumber = number + 1;
         setnumber(InchrageNumber)
@@ -39,9 +44,9 @@ const TechnologyCard = ({ technology, number, setnumber, isSelected, setiselecte
         difficulty,
         badge,
     } = technology;
-     const isAlreadySelected = isSelected.some(
-            (item) => item.id === technology.id
-        );
+    const isAlreadySelected = isSelected.some(
+        (item) => item.id === technology.id
+    );
     return (
         <div>
             <div className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
@@ -124,7 +129,10 @@ const TechnologyCard = ({ technology, number, setnumber, isSelected, setiselecte
 
                         }
                     >
-                        {isAlreadySelected ? "Technology Selected " : "Add to Stack"}
+                        {isAlreadySelected ? <span className="flex items-center justify-center gap-2">
+                             <FaCheckCircle />
+                            Added To Stack
+                        </span> : "Add to Stack"}
                     </button>
                 </div>
             </div>
